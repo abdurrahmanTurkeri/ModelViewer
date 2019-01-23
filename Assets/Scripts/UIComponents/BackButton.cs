@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public class BackButton : MonoBehaviour, IPointerEnterHandler  {
+public class BackButton : MonoBehaviour, IPointerClickHandler  {
 
 	// Use this for initialization
 	void Start () {
@@ -17,7 +17,7 @@ public class BackButton : MonoBehaviour, IPointerEnterHandler  {
 		
 	}
 
-	public void OnPointerEnter(UnityEngine.EventSystems.PointerEventData even){
+	public void OnPointerClick(UnityEngine.EventSystems.PointerEventData even){
 		if (even.button == PointerEventData.InputButton.Left) {
 			LevelManager.modelName = null;
 			SceneManager.LoadScene (0);

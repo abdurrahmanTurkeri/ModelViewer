@@ -4,7 +4,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine;
 
-public class ResetButton : MonoBehaviour, IPointerEnterHandler {
+public class ResetButton : MonoBehaviour, IPointerClickHandler {
 
 
 	public GameObject targetModel;
@@ -18,7 +18,7 @@ public class ResetButton : MonoBehaviour, IPointerEnterHandler {
 		
 	}
 
-	public void OnPointerEnter(UnityEngine.EventSystems.PointerEventData even){
+	public void OnPointerClick(UnityEngine.EventSystems.PointerEventData even){
 		if (even.button == PointerEventData.InputButton.Left) {
 			targetModel.transform.localPosition = Vector3.zero;
 			targetModel.transform.localRotation = Quaternion.identity;

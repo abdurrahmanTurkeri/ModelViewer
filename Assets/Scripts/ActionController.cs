@@ -5,12 +5,13 @@ using System;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public class ActionController : MonoBehaviour , IPointerEnterHandler{
+public class ActionController : MonoBehaviour , IPointerClickHandler{
 
 	// Use this for initialization
 
 	public Dictionary<string, string> partModels;
 	public Dictionary<string, string> textures;
+
 
 	void Start () {
 		partModels = new Dictionary<string, string>(); 
@@ -22,7 +23,7 @@ public class ActionController : MonoBehaviour , IPointerEnterHandler{
 		
 	}
 
-	public void OnPointerEnter(UnityEngine.EventSystems.PointerEventData even){
+	public void OnPointerClick(UnityEngine.EventSystems.PointerEventData even){
 		if (even.button == PointerEventData.InputButton.Left) {
 			if (tag == "Texture") {
 				OnClickTextureImage (name);

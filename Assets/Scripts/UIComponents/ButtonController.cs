@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine;
 
-public class ButtonController : MonoBehaviour, IPointerEnterHandler {
+public class ButtonController : MonoBehaviour, IPointerClickHandler {
 
 
 	// Use this for initialization
@@ -19,7 +19,7 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler {
 	}
 
 
-	public void OnPointerEnter(UnityEngine.EventSystems.PointerEventData even){
+	public void OnPointerClick(UnityEngine.EventSystems.PointerEventData even){
 		if (even.button == PointerEventData.InputButton.Left) {
 			PanelManager.instance.SetContentType (gameObject.name);
 		}

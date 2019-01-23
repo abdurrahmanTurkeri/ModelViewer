@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 
-public class BigImageButton : MonoBehaviour, IPointerEnterHandler {
+public class BigImageButton : MonoBehaviour, IPointerClickHandler {
 
 	// Use this for initialization
 	void Start () {
@@ -18,7 +18,7 @@ public class BigImageButton : MonoBehaviour, IPointerEnterHandler {
 		
 	}
 
-	public void OnPointerEnter(UnityEngine.EventSystems.PointerEventData even){
+	public void OnPointerClick(UnityEngine.EventSystems.PointerEventData even){
 		print ("event calisti");
 		if (even.button == PointerEventData.InputButton.Left) {
 			LevelManager.modelName = name;
