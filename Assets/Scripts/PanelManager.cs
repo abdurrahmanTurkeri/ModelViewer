@@ -35,9 +35,12 @@ public class PanelManager : MonoBehaviour
 			bool mouseInPanel = CheckMouseInPanel ();
 			bool mouseHitObject = CheckMouseHitAnObject ();
 
-			if (mouseInPanel || mouseHitObject) {
+            if (mouseInPanel)
+            { 
+                SetActive(true);
+            }else if( mouseHitObject) {
 				SetActive (true);
-				PopulateContent ();
+		    	PopulateContent ();
 			} else {
 				SetActive (false);
 			}

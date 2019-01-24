@@ -20,10 +20,11 @@ public class ActionController : MonoBehaviour , IPointerClickHandler{
 	
 	// Update is called once per frame
 	void Update () {
-		
+       // Debug.Log("ActionController " + gameObject.name);
 	}
 
 	public void OnPointerClick(UnityEngine.EventSystems.PointerEventData even){
+            Debug.Log("Action Controller clicked");
 		if (even.button == PointerEventData.InputButton.Left) {
 			if (tag == "Texture") {
 				OnClickTextureImage (name);
@@ -72,8 +73,9 @@ public class ActionController : MonoBehaviour , IPointerClickHandler{
 			Destroy(parentObject);
 			LevelManager.selectedObject = newModel;
 		} else {
-			partModels.Add (LevelManager.selectedObject.name, modelName);
-			Mesh model = Resources.Load<Mesh> (modelPath);
+            if(!partModels.ContainsValue(LevelManager.selectedObject.name))
+			    partModels.Add (LevelManager.selectedObject.name, modelName);
+            Mesh model = Resources.Load<Mesh> (modelPath);
 			LevelManager.selectedObject.GetComponent<MeshFilter> ().mesh = model;
 		}
 		//print (material.GetTexture ("Albedo").name);
