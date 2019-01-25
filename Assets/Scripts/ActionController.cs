@@ -38,23 +38,40 @@ public class ActionController : MonoBehaviour , IPointerClickHandler{
 	public void OnClickTextureImage(string textureName){
 
 		print ("OnClickTextureImage calisti");
-		//MeshRenderer meshRenderer = LevelManager.selectedObject.GetComponent<MeshRenderer> ();
-		//Material material = meshRenderer.material;
+        //MeshRenderer meshRenderer = LevelManager.selectedObject.GetComponent<MeshRenderer> ();
+        //Material material = meshRenderer.material;
+        String path = extractPathFromName(LevelManager.selectedObject.name) + "/" + textureName;
 
-		Material material = getMaterialOfObject (LevelManager.selectedObject);
-		Texture texture = Resources.Load<Texture> ("Textures/" + extractPathFromName(LevelManager.selectedObject.name) + "/" + textureName);
+        Texture texture = Resources.Load<Texture>("Textures/" + path);
+        if(texture != null)
+        {
+            Material material = getMaterialOfObject(LevelManager.selectedObject);
+            print(LevelManager.selectedObject.name);
+            print("texture name is " + texture.name);
+            print("material name is " + material.name);
 
-		print (LevelManager.selectedObject.name);
-		print ("texture name is " + texture.name);
-		print ("material name is " + material.name);
+            material.SetTexture("Albedo", texture);
+            material.mainTexture = texture;
 
-		material.SetTexture("Albedo", texture);
-		material.mainTexture = texture;
+        }
+        else
+        {
+            Material material = Resources.Load<Material>("Materials/" + path);
+            if(material != null)
+                setMaterialOfObject(LevelManager.selectedObject, material);
+        }
 
-		//print (material.GetTexture ("Albedo").name);
-	}
 
-	public void OnClickModelImage(string modelName){
+        //print (material.GetTexture ("Albedo").name);
+    }
+
+    private void setMaterialOfObject(GameObject selectedObject, Material material)
+    {
+        MeshRenderer mr = selectedObject.GetComponent<MeshRenderer>();
+        mr.material = material;
+    }
+
+    public void OnClickModelImage(string modelName){
 
 		print ("OnClickModelImage calisti");
 		//MeshRenderer meshRenderer = LevelManager.selectedObject.GetComponent<MeshRenderer> ();
